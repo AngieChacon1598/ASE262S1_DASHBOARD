@@ -1,0 +1,166 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard Analítico Empresarial</title>
+
+    <!-- Librería Plotly -->
+    <script src="https://cdn.plot.ly/plotly-3.3.0.min.js"></script>
+
+    <!-- Conexión con CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/estilo.css') }}">
+</head>
+
+<body>
+
+    <main class="pagina">
+
+        <!-- 1. ENCABEZADO -->
+        <header class="encabezado">
+
+            <div class="encabezado-texto">
+
+                <p class="etiqueta-encabezado">
+                    PROYECTO INTEGRADOR · ASE262
+                </p>
+
+                <h1>Dashboard Analítico Empresarial</h1>
+
+                <p class="subtitulo-encabezado">
+                    Reporte de ventas y análisis de indicadores
+                </p>
+
+            </div>
+
+            <div class="fuente-datos">
+                <span class="punto-fuente"></span>
+                <span>Datos desde Google Sheets</span>
+            </div>
+
+        </header>
+
+
+        <!-- 2. INDICADORES KPI -->
+        <section class="contenedor-kpis">
+
+            <!-- KPI 1: REGISTROS -->
+            <article class="tarjeta-kpi kpi-registros">
+
+                <h2>Total de registros</h2>
+
+                <p class="numero-kpi">
+                    {{ total_registros }}
+                </p>
+
+                <p class="detalle-kpi">
+                    Registros encontrados
+                </p>
+
+            </article>
+
+
+            <!-- KPI 2: UNIDADES -->
+            <article class="tarjeta-kpi kpi-unidades">
+
+                <h2>Unidades vendidas</h2>
+
+                <p class="numero-kpi">
+                    {{ total_unidades }}
+                </p>
+
+                <p class="detalle-kpi">
+                    Cantidad total de productos
+                </p>
+
+            </article>
+
+
+            <!-- KPI 3: VENTAS -->
+            <article class="tarjeta-kpi kpi-ventas">
+
+                <h2>Ventas totales</h2>
+
+                <p class="numero-kpi">
+                    S/ {{ "{:,.2f}".format(ventas_totales) }}
+                </p>
+
+                <p class="detalle-kpi">
+                    Importe acumulado de las ventas
+                </p>
+
+            </article>
+
+        </section>
+
+
+        <!-- 3. SECCIÓN DE ANÁLISIS -->
+        <section class="seccion-analisis">
+
+            <div class="titulo-seccion">
+
+                <div>
+                    <h2>Análisis de ventas</h2>
+
+                    <p>
+                        Explora los resultados con gráficos
+                        interactivos de Plotly.
+                    </p>
+                </div>
+
+                <span class="contador-graficos">
+                    4 visualizaciones
+                </span>
+
+            </div>
+
+
+            <!-- 4. GRÁFICOS INTERACTIVOS -->
+            <div class="contenedor-graficos">
+
+                <!-- GRÁFICO 1 -->
+                <article class="tarjeta-grafico">
+                    {{ grafico1 | safe }}
+                </article>
+
+                <!-- GRÁFICO 2 -->
+                <article class="tarjeta-grafico">
+                    {{ grafico2 | safe }}
+                </article>
+
+                <!-- GRÁFICO 3 -->
+                <article class="tarjeta-grafico">
+                    {{ grafico3 | safe }}
+                </article>
+
+                <!-- GRÁFICO 4 -->
+                <article class="tarjeta-grafico">
+                    {{ grafico4 | safe }}
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- 5. PIE DE PÁGINA -->
+        <footer class="pie-pagina">
+
+            <p>ASE262 · Programación Estructurada</p>
+
+            <p>
+                Proyecto Integrador ·
+                Dashboard Analítico Empresarial
+            </p>
+
+        </footer>
+
+    </main>
+
+</body>
+</html>
